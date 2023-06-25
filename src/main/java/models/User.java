@@ -37,10 +37,8 @@ public class User implements java.io.Serializable {
 	private Date datebirth = null; // no tiene error inicial
 	private String pwd = "";
 	private String pwd2 = "";
-	
 	private String about = "";
-	private int city = 0;
-	private String gender = "";
+	private String usertype = "";
 	
 	/*private ¿photo? picture = null; */
 
@@ -109,13 +107,10 @@ public class User implements java.io.Serializable {
 		return this.about;
 	}
 	
-	public int getCity() {
-		return this.city;
+	public String getUsertype() {
+		return usertype;
 	}
 	
-	public String getGender() {
-		return this.gender;
-	}
 	
 	/* SETTERS */
 	public void setId(int id) {
@@ -249,20 +244,9 @@ public class User implements java.io.Serializable {
 	public void setAbout(String about) {
 		this.about = about;
 	}
-	
-	public void setCity(int city) {
-		String idString = String.valueOf(city);
-		if (idString.matches("\\d+")) {
-			error.put("city", true);
-			this.city = city; // en el caso de que sea un número entero
-		} else {
-			System.out.println("El valor introducido no es válido. Debe ser un número entero.");
-		}
 
-	}
-	
-	public void setGender(String gender) {
-		this.gender = gender;
+	public void setUsertype(String usertype) {
+		this.usertype = usertype;
 	}
 
 
@@ -274,5 +258,8 @@ public class User implements java.io.Serializable {
 	public void setError(String name, boolean error) {
 		this.error.put(name, error);
 	}
+
+
+
 		
 }

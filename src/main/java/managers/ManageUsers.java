@@ -42,7 +42,7 @@ public class ManageUsers {
 	
 	/* Get a user given its PK*/
 	public User getUser(Integer id) {
-		String query = "SELECT id,username,name,surname,mail FROM User WHERE id = ? ;";
+		String query = "SELECT id,username,name,surname,mail,usertype FROM User WHERE id = ? ;";
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		User user = null;
@@ -57,6 +57,7 @@ public class ManageUsers {
 				user.setName(rs.getString("name"));
 				user.setSurname(rs.getString("surname"));
 				user.setMail(rs.getString("mail"));
+				user.setUsertype(rs.getString("usertype"));
 			}
 			rs.close();
 			statement.close();
@@ -68,7 +69,7 @@ public class ManageUsers {
 	
 	// get a user given its username
 	public User getUser(String username) {
-		String query = "SELECT id,username,name,surname,mail FROM User WHERE username = ? ;";
+		String query = "SELECT id,username,name,surname,mail,usertype FROM User WHERE username = ? ;";
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		User user = null;
@@ -83,6 +84,7 @@ public class ManageUsers {
 				user.setName(rs.getString("name"));
 				user.setSurname(rs.getString("surname"));
 				user.setMail(rs.getString("mail"));
+				user.setUsertype(rs.getString("usertype"));
 			}
 			rs.close();
 			statement.close();
@@ -94,8 +96,8 @@ public class ManageUsers {
 		
 	// Add new user
 	public void addUser(User user) {
-		String query = "INSERT INTO User (username, name, surname, phone, mail, datebirth, pwd) " +
-		"VALUES (?, ?, ?, ?, ?, ?, ?)";
+		String query = "INSERT INTO User (username, name, surname, mail, tel, dob, pwd, usertype) " +
+		"VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 		
 		PreparedStatement statement = null;
 		try {
@@ -107,8 +109,11 @@ public class ManageUsers {
 			statement.setString(5, user.getMail());
 			statement.setDate(6, user.getDatebirth());
 			statement.setString(7, user.getPwd());
+			statement.setString(8, user.getUsertype());
 			statement.executeUpdate();
 			statement.close();
+			System.out.println("User added: "+user.getUsername());
+			
 		} catch (SQLIntegrityConstraintViolationException e) {
 			System.out.println(e.getMessage());
 		} catch (SQLException e) {
@@ -118,7 +123,7 @@ public class ManageUsers {
 	
 	// Follow a user
 	public void followUser(Integer uid, Integer fid) {
-		String query = "INSERT INTO Following (uid,fid) VALUES (?,?)";
+		String query = "INSERT INTO Following (userid,followedId) VALUES (?,?)";
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);
@@ -135,7 +140,7 @@ public class ManageUsers {
 	
 	// Unfollow a user
 	public void unfollowUser(Integer uid, Integer fid) {
-		String query = "DELETE FROM Following WHERE uid = ? AND fid = ?";
+		String query = "DELETE FROM Following WHERE userId = ? AND followedId = ?";
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);
@@ -154,7 +159,7 @@ public class ManageUsers {
 	
 	// Get all the users
 	public List<User> getUsers(Integer start, Integer end) {
-		 String query = "SELECT id,name FROM User ORDER BY name ASC LIMIT ?,?;";
+		 String query = "SELECT id,username FROM User ORDER BY username ASC LIMIT ?,?;";
 		 PreparedStatement statement = null;
 		 List<User> l = new ArrayList<User>();
 		 try {
@@ -165,7 +170,7 @@ public class ManageUsers {
 			 while (rs.next()) {
 				 User user = new User();
 				 user.setId(rs.getInt("id"));
-				 user.setName(rs.getString("name"));
+				 user.setUsername(rs.getString("username"));
 				 l.add(user);
 			 }
 			 rs.close();
@@ -177,7 +182,7 @@ public class ManageUsers {
 	}
 	
 	public List<User> getNotFollowedUsers(Integer id, Integer start, Integer end) {
-		 String query = "SELECT id,name FROM User WHERE id NOT IN (SELECT id FROM User,Following WHERE id = fid AND uid = ?) AND id <> ? ORDER BY name LIMIT ?,?;";
+		 String query = "SELECT id,username FROM User WHERE id NOT IN (SELECT id FROM User,Following WHERE User.id = Following.userId AND Following.userId = ?) AND id <> ? ORDER BY name LIMIT ?,?;";
 		 PreparedStatement statement = null;
 		 List<User> l = new ArrayList<User>();
 		 try {
@@ -190,7 +195,7 @@ public class ManageUsers {
 			 while (rs.next()) {
 				 User user = new User();
 				 user.setId(rs.getInt("id"));
-				 user.setName(rs.getString("name"));
+				 user.setUsername(rs.getString("username"));
 				 l.add(user);
 			 }
 			 rs.close();
@@ -202,7 +207,7 @@ public class ManageUsers {
 	}
 	
 	public List<User> getFollowedUsers(Integer id, Integer start, Integer end) {
-		 String query = "SELECT id,name FROM User,Following WHERE id = fid AND uid = ? ORDER BY name LIMIT ?,?;";
+		 String query = "SELECT User.id,User.username FROM User,Following WHERE User.id = Following.userId AND Following.userId = ? ORDER BY username LIMIT ?,?;";
 		 PreparedStatement statement = null;
 		 List<User> l = new ArrayList<User>();
 		 try {
@@ -214,7 +219,7 @@ public class ManageUsers {
 			 while (rs.next()) {
 				 User user = new User();
 				 user.setId(rs.getInt("id"));
-				 user.setName(rs.getString("name"));
+				 user.setUsername(rs.getString("username"));
 				 l.add(user);
 			 }
 			 rs.close();
@@ -227,12 +232,12 @@ public class ManageUsers {
 	
 	public Pair<Boolean,User> checkLogin(User user) {
 		
-		String query = "SELECT id,mail from User where name=? AND pwd=?";
+		String query = "SELECT id,mail from User where username=? AND pwd=?";
 		PreparedStatement statement = null;
 		boolean output = false;
 		try {
 			statement = db.prepareStatement(query);
-			statement.setString(1,user.getName());
+			statement.setString(1,user.getUsername());
 			statement.setString(2,user.getPwd());
 			ResultSet rs = statement.executeQuery();
 			if (rs.next()) {
@@ -337,7 +342,7 @@ public class ManageUsers {
 	// TODO: add other methods
 	public boolean checkPhone(String phone) {
 		
-		String query = "SELECT phone from User where phone=?";
+		String query = "SELECT tel from User where tel=?";
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		boolean output = false;

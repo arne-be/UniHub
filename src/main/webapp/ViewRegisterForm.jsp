@@ -158,14 +158,12 @@
       <input type="password" id="pwd2" name="pwd2" placeholder="Repeat your password" value="${user.pwd2}" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,12}$"><br><br>
 
       
-      <b>What kind of user will you be? Choose one:</b>
+      <label for="usertype" class="w3-text-theme" >What kind of user will you be? Choose one:</label>
       <div class="select">
         <select name="format" id="format">
           <option selected disabled>Choose an option...</option>
-          <option value="Administrator">Administrator</option>
-          <option value="Common_User">Common user</option>
-          <option value="Content_Contributor">Content contributor</option>
-          <option value="BB_Account">Business/Brand account</option>
+          <option id="usertype" value="${user.usertype}">Common user</option>
+          <option id="usertype" value="${user.usertype} }">Business/Brand account</option>
         </select>
       </div>
 
