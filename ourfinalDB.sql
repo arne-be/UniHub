@@ -22,7 +22,7 @@ CREATE TABLE User(
   tel varchar(255) not null,
   dob date not null,
   pwd varchar(255) not null,
-  /*usertype possible values: 'Administrator‘, 'Common', ‘Brand‘*/
+  /*usertype possible values: 'Administrator‘, 'Common', ‘Anonymous'*/
   usertype varchar(255) not null,
   about varchar(255) not null default '',
   primary key(id),
