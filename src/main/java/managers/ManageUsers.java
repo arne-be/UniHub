@@ -42,7 +42,7 @@ public class ManageUsers {
 	
 	/* Get a user given its PK*/
 	public User getUser(Integer id) {
-		String query = "SELECT id,username,name,surname,mail,usertype FROM User WHERE id = ? ;";
+		String query = "SELECT id,username,name,surname,mail,tel,dob,usertype,about FROM User WHERE id = ? ;";
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		User user = null;
@@ -53,11 +53,14 @@ public class ManageUsers {
 			if (rs.next()) {
 				user = new User();
 				user.setId(rs.getInt("id"));
-				user.setName(rs.getString("username"));
+				user.setUsername(rs.getString("username"));
 				user.setName(rs.getString("name"));
 				user.setSurname(rs.getString("surname"));
 				user.setMail(rs.getString("mail"));
+				user.setPhone(rs.getString("tel"));
+				user.setDatebirth(rs.getDate("dob"));
 				user.setUsertype(rs.getString("usertype"));
+				user.setAbout(rs.getString("about"));
 			}
 			rs.close();
 			statement.close();
@@ -69,7 +72,7 @@ public class ManageUsers {
 	
 	// get a user given its username
 	public User getUser(String username) {
-		String query = "SELECT id,username,name,surname,mail,usertype FROM User WHERE username = ? ;";
+		String query = "SELECT id,username,name,surname,mail,tel,dob,usertype,about FROM User WHERE username = ?;";
 		PreparedStatement statement = null;
 		ResultSet rs = null;
 		User user = null;
@@ -84,8 +87,10 @@ public class ManageUsers {
 				user.setName(rs.getString("name"));
 				user.setSurname(rs.getString("surname"));
 				user.setMail(rs.getString("mail"));
+				user.setPhone(rs.getString("tel"));
+				user.setDatebirth(rs.getDate("dob"));
 				user.setUsertype(rs.getString("usertype"));
-				System.out.println("THe user was succesfully caught: "+user.getUsername());
+				user.setAbout(rs.getString("about"));
 			}
 			rs.close();
 			statement.close();
