@@ -8,7 +8,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 
 /**
  * Servlet implementation class TermsController
@@ -28,7 +28,7 @@ public class TermsController extends HttpServlet {
      * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
      */
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HttpSession session = request.getSession(false);
+        //HttpSession session = request.getSession(false);
         
 		request.setAttribute("menu","ViewMenuNotLogged.jsp");
 		request.setAttribute("content", "Terms&Conditions.jsp");

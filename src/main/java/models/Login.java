@@ -11,7 +11,7 @@ public class Login {
 	
 	private HashMap<String,Boolean> error = null;
 	
-	public Login (){
+	public Login() {
 		error = new HashMap<String, Boolean>();
 		error.put("username", false);
 		error.put("pwd", false);
@@ -37,10 +37,10 @@ public class Login {
 			this.username = username;
 		}
 	}
-
 	public void setPwd(String pwd) {
 		if (manager.loginUser(getUsername(), pwd)) {
 			this.pwd = pwd;
+			error.put("pwd", true);
 			System.out.println("User is logged in successfully!");
 		} else {
 			error.put("pwd", true);

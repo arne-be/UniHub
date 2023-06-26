@@ -290,8 +290,8 @@ public class ManageUsers {
 			
 			return output;
 			
-		}
-	
+	}
+
 	public boolean checkMail(String mail) {
 		
 		String query = "SELECT mail from User where mail=?";
@@ -378,12 +378,12 @@ public class ManageUsers {
 	}
 	
 
-	public boolean loginUser(String username, String pwd) {
+	public boolean loginUser(String user, String pwd) {
 		boolean exists = false;
 		PreparedStatement ps = null;
 	    try {
 	        ps = db.prepareStatement("SELECT * FROM User WHERE username = ? AND pwd = ?");
-	        ps.setString(1, username);
+	        ps.setString(1, user);
 	        ps.setString(2, pwd);
 	        ResultSet rs = ps.executeQuery();
 	        if(rs.next()) {

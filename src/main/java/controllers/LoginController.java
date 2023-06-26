@@ -43,7 +43,6 @@ public class LoginController extends HttpServlet {
 		System.out.print("LoginController: ");
 		
 		User user = new User();
-		/* P3 CODE: next line */
 		Login login = new Login();
 		ManageUsers manager = new ManageUsers();
 		String view = "ViewLoginForm.jsp";
@@ -60,7 +59,6 @@ public class LoginController extends HttpServlet {
 	    		if (success) {
 		    		System.out.println("login OK, implementing Cookies for 30 days");
 		    		
-		    		//P3 CODE
 					if (login.getRememberMe()) {
 						Cookie cUserName = new Cookie("cookuser", login.getUsername());
 						Cookie cPassword = new Cookie("cookpass", login.getPwd());
@@ -73,24 +71,28 @@ public class LoginController extends HttpServlet {
 					
 					// added to be able to add user as attribute in the session
 					user = manager.getUser(login.getUsername());
-					
+
 					manager.finalize();
 
 	    			HttpSession session = request.getSession();
 	    			session.setAttribute("user", user);
+
 	    			view = "ViewOwnTimeline.jsp";
 	    			
 	    		}
 	    		else {
 	    			System.out.println("user is not logged (user not found), forwarding to ViewLoginForm ");
-	    			request.setAttribute("error", true);
-					request.setAttribute("user",user);
+	    			/*request.setAttribute("error", true);
+					request.setAttribute("user",user);*/
 				}
 		    } 
 			
 	    	else {
 			    System.out.println("user is not logged (first time), forwarding to ViewLoginForm ");
 				request.setAttribute("user",user);
+				request.setAttribute("login", login);
+				request.setAttribute("error", true);
+
 	    	}
 	    	
 	    	RequestDispatcher dispatcher = request.getRequestDispatcher(view);
@@ -110,4 +112,3 @@ public class LoginController extends HttpServlet {
 	}
 
 }
-

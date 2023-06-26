@@ -12,13 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import managers.ManageUsers;
-import models.Login;
 import models.User;
 
 import javax.servlet.http.Cookie;
-import managers.ManageUsers;
-import models.User;
-import models.Login;
 
 
 /**
