@@ -157,18 +157,6 @@
       <label for="pwd2" class="w3-text-theme"> Confirm your password:</label><br>
       <input type="password" id="pwd2" name="pwd2" placeholder="Repeat your password" value="${user.pwd2}" required pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,12}$"><br><br>
 
-      
-      <!--
-      <label for="usertype" class="w3-text-theme" >What kind of user will you be? Choose one:</label>
-      <div class="select">
-        <select name="format" id="format">
-          <option selected disabled>Choose an option...</option>
-          <option id="usertype" value="${user.usertype}">Common user</option>
-          <option id="usertype" value="${user.usertype} }">Business/Brand account</option>
-        </select>
-      </div>
-      -->
-
       <!-- P3 code: siguiente línea hasta "termns of service" -->
       <div id="terms-of-service-container">
         <input type="checkbox" id="terms-of-service" name="terms-of-service" required>

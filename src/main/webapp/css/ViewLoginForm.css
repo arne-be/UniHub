@@ -3,19 +3,20 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  position: fixed;
-  left: 650px; /* Adjust the left position as needed */
-  top: 200px; /* Adjust the top position as needed */
-  bottom: 50px; /* Adjust the bottom position as needed */
-  width: 400px;
-  height: 450px;
+  /*width: 300px;*/
+  height: auto;
   margin: 0 auto;
   background-color: white;
   border: none;
   border-radius: 40px;
   padding: 20px;
   box-sizing: border-box;
-  
+
+  /* NEW LINES */
+  width: 100%;
+  max-width: 300px;
+
+
 }
 
 .required-form h1 {
@@ -30,15 +31,4 @@
   text-align: center;
 }
 
-html, body {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
 
-body {
-  background-image: url('imgs/bkgrnd.jpg');
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-}

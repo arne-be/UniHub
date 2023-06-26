@@ -95,6 +95,10 @@ $(document).ready(function(){
 	</div>
 	</div>
 	<!-- End Content -->
+	<!-- Footer -->
+	<footer class="w3-container w3-theme">
+	  <p> Universitat Pompeu Fabra </p>
+	</footer>
 	
 	<script>
 		function stack() {
