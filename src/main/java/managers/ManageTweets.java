@@ -32,7 +32,7 @@ public class ManageTweets {
 	
 	/* Add a tweet */
 	public void addTweet(Tweet tweet) {
-		String query = "INSERT INTO Tweet (uid,postdatetime,content) VALUES (?,?,?)";
+		String query = "INSERT INTO Tweet (userId,date,text) VALUES (?,?,?)";
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);
@@ -48,7 +48,7 @@ public class ManageTweets {
 	
 	/* Delete existing tweet */
 	public void deleteTweet(Integer id,Integer uid) {
-		String query = "DELETE FROM Tweet WHERE id = ? AND uid=?";
+		String query = "DELETE FROM Tweet WHERE id = ? AND userId=?";
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);
@@ -64,7 +64,7 @@ public class ManageTweets {
 	
 	/* Get tweets from a user given start and end*/
 	public List<Tweet> getUserTweets(Integer uid,Integer start, Integer end) {
-		 String query = "SELECT Tweet.id,Tweet.uid,Tweet.postdatetime,Tweet.content,User.name FROM Tweet INNER JOIN User ON Tweet.uid = users.id where Tweet.uid = ? ORDER BY Tweet.postdatetime DESC LIMIT ?,? ;";
+		 String query = "SELECT Tweet.id,Tweet.userId,Tweet.date,Tweet.text,User.username FROM Tweet INNER JOIN User ON Tweet.userId = User.id where Tweet.userId = ? ORDER BY Tweet.date DESC LIMIT ?,? ;";
 		 PreparedStatement statement = null;
 		 List<Tweet> l = new ArrayList<Tweet>();
 		 try {
@@ -76,10 +76,10 @@ public class ManageTweets {
 			 while (rs.next()) {
 				 Tweet tweet = new Tweet();
        		     tweet.setId(rs.getInt("id"));
-				 tweet.setUid(rs.getInt("uid"));
-				 tweet.setPostDateTime(rs.getTimestamp("postdatetime"));
-				 tweet.setContent(rs.getString("content"));
-				 tweet.setUname(rs.getString("name"));
+				 tweet.setUid(rs.getInt("userId"));
+				 tweet.setPostDateTime(rs.getTimestamp("date"));
+				 tweet.setContent(rs.getString("text"));
+				 tweet.setUname(rs.getString("username"));
 				 l.add(tweet);
 			 }
 			 rs.close();
