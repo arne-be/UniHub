@@ -1,4 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" session="false"%>
+
+
   
  <style>
     /* CSS for the vertical left-aligned menu */
@@ -9,6 +11,7 @@
         bottom: 50px; /* Adjust the bottom position as needed */
         width: 200px;
         background-color: transparent;
+        font-family: 'Montserrat', sans-serif;
     }
     
     .sidebar .w3-bar {
@@ -45,18 +48,17 @@
     }
     
 </style>
-<body style="background-image: url('imgs/bkgrnd.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
 <div class="sidebar">
 <div class="w3-bar">
-	<img class="unihub-image" src="imgs/UniHub.png" alt="UniHub">
+	<img class="unihub-image" src="imgs/UniHub.png" alt="UniHub">  
 
-		<a class="menu w3-bar-item w3-button w3-hide-small" id="MainController" href="#" style="font-weight: bold; font-size: 20px;">Register</a>	    
+		<a class="menu w3-bar-item w3-button w3-hide-small" id="MainController" href="#" style="font-weight: bold; font-size: 22px;">Register</a>	    
 		<a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="stack()">&#9776;</a>
 		<a href="#" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="stack()">&#9776;</a>
-    	<a class="menu w3-bar-item w3-button w3-hide-small" id="LoginController" href="#" style="font-weight: bold; font-size: 20px;">Log in</a>
+    	<a class="menu w3-bar-item w3-button w3-hide-small" id="LoginController" href="#" style="font-weight: bold; font-size: 22px;">Log in</a>
 	    <a href="#" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="stack()">&#9776;</a>	    
 	    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="stack()">&#9776;</a>
-	    <a class="menu w3-bar-item w3-button w3-hide-small" id="LoginController" href="#" style="font-weight: bold; font-size: 20px;">Global Timeline</a>
+	    <a class="menu w3-bar-item w3-button w3-hide-small" id="LoginController" href="#" style="font-weight: bold; font-size: 22px;">Global <br> Timeline</a>
 		<a href="#" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="stack()">&#9776;</a>
 </div>
 </div>

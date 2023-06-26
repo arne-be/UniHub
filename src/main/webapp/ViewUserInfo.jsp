@@ -5,18 +5,26 @@
 <html>
 <head>
   <title>Profile Page</title>
+  <style>
+    .purple-button {
+      background-color: purple;
+      color: white;
+    }
+  </style>
 </head>
 <body>
   <div class="w3-container w3-card w3-round w3-white w3-section w3-center">
     <h4>My Profile</h4>
     <p><img src="imgs/avatar3.png" class="w3-circle" style="height:106px;width:106px" alt="Avatar"></p>
     <hr>
+     <p class="w3-left-align"> <i class="fa fa-user fa-fw w3-margin-right"></i> ${user.username} </p>
     <p class="w3-left-align"> <i class="fa fa-id-card fa-fw w3-margin-right"></i> ${user.name} ${user.surname} </p>
     <p class="w3-left-align"> <i class="fa fa-id-badge fa-fw w3-margin-right"></i> ${user.mail} </p>
-    <button type="button" class="editUser w3-row w3-button w3-green w3-section"><i class="fa fa-user-plus"></i> &nbsp;Edit</button>
+    <p class="w3-left-align"> <i class="fa fa-birthday-cake fa-fw w3-margin-right"></i> ${user.datebirth} </p>
+    <button type="button" id ="editUser" class="w3-row w3-button purple-button w3-section"><i class="fa fa-edit"></i> &nbsp;Edit</button>   
+  	<button type="submit" id="saveProfile" hidden="hidden" >Save changes</button>
+  	<button type="button" id="deleteOwnProfile"  class="w3-row w3-button purple-button w3-section" >Delete Profile</button> 
 
-    <!-- añadido para salir-->
-    <a class="menu w3-bar-item w3-button" id="LogoutController" href=#> Logout </a>
   </div>
   <br>
 

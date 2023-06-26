@@ -120,9 +120,6 @@
 </div>
 </c:if>
 
-<!--faltarían errores para about y gender-->
-
-<body style="background-image: url('imgs/bkgrnd.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
   <div class="required-form" id="required-form">
     <h1>CREATE ACCOUNT</h1>
     

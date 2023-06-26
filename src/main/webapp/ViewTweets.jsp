@@ -8,7 +8,8 @@
    <h4> ${t.uname} </h4><br>
    <hr class="w3-clear">
    <p> ${t.content} </p>
-   <button type="button" class="likeTweet w3-button w3-theme w3-margin-bottom"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button>
-   <button type="button" class="delTweet w3-button w3-red w3-margin-bottom"><i class="fa fa-trash"></i> &nbsp;Delete</button> 
+   <button type="button" class="editTweet w3-row w3-button purple-button w3-section"><i class="fa fa-edit"></i> &nbsp;Edit</button> 
+   <button type="button" class="likeTweet w3-row w3-button purple-button w3-section"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button>
+   <button type="button" class="delTweet w3-row w3-button purple-button w3-section"><i class="fa fa-trash"></i> &nbsp;Delete</button> 
  </div>
 </c:forEach>

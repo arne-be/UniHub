@@ -16,6 +16,7 @@
   padding: 20px;
   box-sizing: border-box;
   
+  
 }
 
 .required-form h1 {
@@ -30,15 +31,16 @@
   text-align: center;
 }
 
-html, body {
+html {
   height: 100%;
-  margin: 0;
-  padding: 0;
 }
 
 body {
-  background-image: url('imgs/bkgrnd.jpg');
+  background: linear-gradient(135deg, #ffc0cb, #dda0dd, #b0e0e6);
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
 }
