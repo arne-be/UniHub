@@ -130,9 +130,6 @@ public class User implements java.io.Serializable {
 		if (!username.matches(regex)) {
 			error.put("username_wrong_format", true);
 			System.out.println("the username does not match the format of 5-20 character with at least one letter.");
-		} else if (manager.checkUser(username)) {
-			error.put("username_exists", true);
-			System.out.println("The username has already been taken.");
 		} else {
 			this.username = username;
 			System.out.println("Welcome: "+username);
@@ -165,9 +162,6 @@ public class User implements java.io.Serializable {
 	    if (!phone.matches(regex)) {
 			error.put("phone_wrong_format", true);
 			System.out.println("The phone's length MUST BE 9.");
-	    } else if (manager.checkPhone(phone)) {
-			error.put("phone_exists", true);
-			System.out.println("The phone has already been used.");
 	    } else {
 	    	this.phone = phone;
 	    }
@@ -180,12 +174,8 @@ public class User implements java.io.Serializable {
 		
 		if (matcher.matches()) {
 			System.out.println("Mail matches the pattern");
-			if (manager.checkMail(mail)) {
-				error.put("mail_exists", true);
-				System.out.println("The mail has already been used.");
-			} else {
-				this.mail = mail;
-			}
+			this.mail = mail;
+			
 		} else {
 			error.put("mail_wrong_format", true);
 			System.out.println("Mail doesn't match the pattern");

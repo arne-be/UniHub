@@ -49,6 +49,7 @@ public class Tweet implements java.io.Serializable {
 		 return this.content;
 	 }
 	 public void setContent(String content) {
+		 System.out.println("content of tweet: "+content);
 		 this.content = content;
 	 }
 

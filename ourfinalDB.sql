@@ -23,7 +23,7 @@ CREATE TABLE User(
   dob date not null,
   pwd varchar(255) not null,
   /*usertype possible values: 'Administrator‘, 'Common', ‘Anonymous'*/
-  usertype varchar(255) not null,
+  usertype varchar(255) not null default 'Common',
   about varchar(255) not null default '',
   primary key(id),
   unique key username(username)

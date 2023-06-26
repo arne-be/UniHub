@@ -80,11 +80,12 @@ public class ManageUsers {
 			if (rs.next()) {
 				user = new User();
 				user.setId(rs.getInt("id"));
-				user.setName(rs.getString("username"));
+				user.setUsername(rs.getString("username"));
 				user.setName(rs.getString("name"));
 				user.setSurname(rs.getString("surname"));
 				user.setMail(rs.getString("mail"));
 				user.setUsertype(rs.getString("usertype"));
+				System.out.println("THe user was succesfully caught: "+user.getUsername());
 			}
 			rs.close();
 			statement.close();
@@ -105,8 +106,8 @@ public class ManageUsers {
 			statement.setString(1, user.getUsername());
 			statement.setString(2, user.getName());
 			statement.setString(3, user.getSurname());
-			statement.setString(4, user.getPhone());
-			statement.setString(5, user.getMail());
+			statement.setString(4, user.getMail());
+			statement.setString(5, user.getPhone());
 			statement.setDate(6, user.getDatebirth());
 			statement.setString(7, user.getPwd());
 			statement.setString(8, user.getUsertype());

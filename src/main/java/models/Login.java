@@ -35,7 +35,6 @@ public class Login {
 			System.out.println("The username doesn't exist.");
 		} else {
 			this.username = username;
-			System.out.println("Welcome: "+username);
 		}
 	}
 

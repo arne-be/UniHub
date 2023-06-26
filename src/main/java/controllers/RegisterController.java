@@ -40,6 +40,7 @@ public class RegisterController extends HttpServlet {
 	   ManageUsers manager = new ManageUsers();
 	   boolean cn = false;
 	   boolean cm = false;
+	   boolean cp = false;
 	
 	   try {
 	
@@ -47,12 +48,14 @@ public class RegisterController extends HttpServlet {
 		   
 		   cn = manager.checkUser(user.getUsername());
 		   cm = manager.checkMail(user.getMail());
+		   cp = manager.checkPhone(user.getPhone());
 		   
-		   user.setError("user", cn);
-		   user.setError("mail", cm);
+		   user.setError("username_exists", cn);
+		   user.setError("mail_exists", cm);
+		   user.setError("phone_exists", cp);
 		   
 		   
-		   if (manager.isComplete(user) && !cn && !cm) {
+		   if (manager.isComplete(user) && !cn && !cm && !cp) {
 			   
 			   manager.addUser(user);
 			   manager.finalize();
@@ -60,7 +63,7 @@ public class RegisterController extends HttpServlet {
 			   System.out.println(" user ok, forwarding to ViewLoginDone.");
 			   HttpSession session = request.getSession();
 			   session.setAttribute("user",user);
-			   RequestDispatcher dispatcher = request.getRequestDispatcher("ViewUserInfo.jsp");
+			   RequestDispatcher dispatcher = request.getRequestDispatcher("ViewOwnTimeline.jsp");
 			   dispatcher.forward(request, response);
 			   
 			  /*System.out.println(" user ok, forwarding to ViewLoginForm.");
