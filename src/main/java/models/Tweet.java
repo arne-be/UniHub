@@ -27,6 +27,7 @@ public class Tweet implements java.io.Serializable {
 	 }
 	 
 	 public void setUid(int uid) {
+		 System.out.println("user of tweet: "+uid);
 		 this.uid = uid;
 	 }
 	 
@@ -35,6 +36,7 @@ public class Tweet implements java.io.Serializable {
 	 }
 	 
 	 public void setUname(String uname) {
+		 System.out.println("username of tweet: "+uname);
 		 this.uname = uname;
 	 }
 	 
