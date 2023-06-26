@@ -58,11 +58,13 @@ public class RegisterController extends HttpServlet {
 		   if (manager.isComplete(user) && !cn && !cm && !cp) {
 			   
 			   manager.addUser(user);
-			   manager.finalize();
 			   /* P3 CODE: líneas 61-63  + session  */
 			   System.out.println(" user ok, forwarding to ViewLoginDone.");
 			   HttpSession session = request.getSession();
-			   session.setAttribute("user",user);
+			   User regUser = manager.getUser(user.getUsername());
+			   session.setAttribute("user", regUser);
+			   
+			   manager.finalize();
 			   RequestDispatcher dispatcher = request.getRequestDispatcher("ViewOwnTimeline.jsp");
 			   dispatcher.forward(request, response);
 			   

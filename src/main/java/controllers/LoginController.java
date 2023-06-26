@@ -73,6 +73,8 @@ public class LoginController extends HttpServlet {
 					
 					// added to be able to add user as attribute in the session
 					user = manager.getUser(login.getUsername());
+					
+					manager.finalize();
 
 	    			HttpSession session = request.getSession();
 	    			session.setAttribute("user", user);
