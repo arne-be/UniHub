@@ -35,7 +35,7 @@
 
 <body style="background-image: url('imgs/bkgrnd.jpg'); background-size: cover; background-position: center; background-repeat: no-repeat;">
   <div class="required-form" id="required-form">
-    <h1>SIGN IN</h1>
+    <h1>LOG IN</h1>
     <form action="LoginController" method="POST">
       <p>
         <label for="user" class="w3-text-grey"> Username </label><br>
