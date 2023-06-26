@@ -208,7 +208,7 @@ public class ManageUsers {
 	}
 	
 	public List<User> getFollowedUsers(Integer id, Integer start, Integer end) {
-		 String query = "SELECT User.id,User.username FROM User,Following WHERE User.id = Following.userId AND Following.userId = ? ORDER BY username LIMIT ?,?;";
+		 String query = "SELECT User.id,User.username FROM User,Following WHERE User.id = Following.followedId AND Following.userId = ? ORDER BY username LIMIT ?,?;";
 		 PreparedStatement statement = null;
 		 List<User> l = new ArrayList<User>();
 		 try {

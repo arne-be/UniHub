@@ -1,6 +1,7 @@
 package controllers;
 
 import java.io.IOException;
+
 import java.lang.reflect.InvocationTargetException;
 
 import javax.servlet.RequestDispatcher;
@@ -12,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.apache.commons.beanutils.BeanUtils;
-import org.apache.commons.lang3.tuple.Pair;
 
 import managers.ManageUsers;
 import models.User;
