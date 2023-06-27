@@ -42,7 +42,11 @@
 </style>
 
 <div class="sidebar">
-    <img class="unihub-image" src="imgs/UniHub.png" alt="UniHub">
+    <a class="menu w3-bar-item w3-button w3-hide-small" id="GetGlobalTimeline" href="ViewGlobalTimeline.jsp" style="font-weight: bold; font-size: 22px;">
+  		<img class="unihub-image" src="imgs/UniHub.png" alt="UniHub" />
+	</a>
+<a href="#" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="stack()">&#9776;</a>
+
     <div class="w3-bar">
         <a class="menu w3-bar-item w3-button w3-hide-small" id="GetOwnTimeline" href="#" style="font-weight: bold; font-size: 20px;">Profile</a>
         <a class="menu w3-bar-item w3-button w3-hide-small" id="GetFollowedUsers" href="#" style="font-weight: bold; font-size: 20px;">Following</a>

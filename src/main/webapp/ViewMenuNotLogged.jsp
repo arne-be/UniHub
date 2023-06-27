@@ -58,7 +58,7 @@
     	<a class="menu w3-bar-item w3-button w3-hide-small" id="LoginController" href="#" style="font-weight: bold; font-size: 22px;">Log in</a>
 	    <a href="#" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="stack()">&#9776;</a>	    
 	    <a href="javascript:void(0)" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="stack()">&#9776;</a>
-	    <a class="menu w3-bar-item w3-button w3-hide-small" id="LoginController" href="#" style="font-weight: bold; font-size: 22px;">Global <br> Timeline</a>
+	    <a class="menu w3-bar-item w3-button w3-hide-small" id="GetGlobalTimeline" href="#" style="font-weight: bold; font-size: 22px;">Global Timeline</a>
 		<a href="#" class="w3-bar-item w3-button w3-right w3-hide-large w3-hide-medium" onclick="stack()">&#9776;</a>
 </div>
 </div>
