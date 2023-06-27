@@ -82,16 +82,16 @@ VALUES
   ('mariacp3', 'Maria', 'Cerezo','maria@gmail.com', '672182625', '2000-10-01', 'Mari@3!', 'Administrator','Good morning everybody!'),
   ("claudia_quera", "Claudia", "Quera","claudia@gmail.com", "612345678",'2001-04-07', "Claudi@1", "Administrator", "I love basketball!"),
   
-  ('randomUser1', 'Max', 'Mustermann', 'max@gmail.com', '123456123', '2000-01-01', 'Password@123', 'Common', 'Im here and using WhatsApp.'),
-  ('randomUser2', 'Maxime', 'Muster', 'maxime@gmail.com', '123456124', '2000-01-01', 'Password@123', 'Common', 'Im here and using WhatsApp.'),
-  ('randomUser3', 'Theo', 'Mann', 'theo@gmail.com', '123456125', '2000-01-01', 'Password@123', 'Common', 'Im here and using WhatsApp.');
+  ('max12', 'Max', 'Mustermann', 'max@gmail.com', '123456123', '2000-01-01', 'Password@123', 'Common', 'Im here and using WhatsApp.'),
+  ('maxime1', 'Maxime', 'Muster', 'maxime@gmail.com', '123456124', '2000-01-01', 'Password@123', 'Common', 'Im here and using WhatsApp.'),
+  ('Theo11', 'Theo', 'Mann', 'theo@gmail.com', '123456125', '2000-01-01', 'Password@123', 'Common', 'Im here and using WhatsApp.');
 
 /* NOW WE INSERT SOME DEFAULT DATA (tweets, comments...)*/
 INSERT INTO Tweet (userId, username, `date`, text, countLikes, countHashtag, countComment)
 VALUES 
-	(5, 'randomUser1', '2023-05-03', 'Hello World!', 0, 0, 0),
-    (4, 'claudia_quera', '2023-05-03', 'Hello World!', 0, 0, 0),
-    (2, 'arne_be', '2023-05-03', 'Hello World too!', 0, 0, 0);
+	(5, 'max12', '2023-02-01', 'I am a graduate!', 0, 0, 0),
+    (4, 'claudia_quera', '2023-05-03', 'Last exams done!', 0, 0, 0),
+    (2, 'arne_be', '2023-06-02', 'UPF has been hacked, I cannot recover my password', 0, 0, 0);
     
 
 /* WE CHECK ALL THE DATA */
