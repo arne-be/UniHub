@@ -105,30 +105,24 @@ public class ManageTweets {
 		} 
 		return  l;
 	}
-	
-	/* Get tweets from followed users*/
-	public List<Tweet> getFollowerTweets(Integer uid,Integer start, Integer end) {
-		 String query = "SELECT Tweet.id, Tweet.userId, Tweet.date, Tweet.text, User.username "
-	             + "FROM Tweet "
-	             + "INNER JOIN User ON Tweet.userId = User.id "
-	             + "WHERE (Tweet.userId = ? OR Tweet.userId IN (SELECT followedId FROM Following WHERE followedId = ?)) "
-	             + "ORDER BY Tweet.date DESC LIMIT ?, ?;";
+	/* Get tweets from a all users given start and end*/
+	public List<Tweet> getAllTweets(Integer start, Integer end) {
+		 String query = "SELECT Tweet.id,Tweet.userId,Tweet.date,Tweet.text,User.username FROM Tweet INNER JOIN User ON Tweet.userId = User.id ORDER BY Tweet.date DESC LIMIT ?,? ;";
 		 PreparedStatement statement = null;
 		 List<Tweet> l = new ArrayList<Tweet>();
 		 try {
 			 statement = db.prepareStatement(query);
-			 statement.setInt(1,uid);
-			 statement.setInt(2,start);
-			 statement.setInt(3,end);
+			 statement.setInt(1,start);
+			 statement.setInt(2,end);
 			 ResultSet rs = statement.executeQuery();
 			 while (rs.next()) {
-				 Tweet tweet = new Tweet();
-       		     tweet.setId(rs.getInt("id"));
-				 tweet.setUid(rs.getInt("userId"));
-				 tweet.setPostDateTime(rs.getTimestamp("date"));
-				 tweet.setContent(rs.getString("text"));
-				 tweet.setUname(rs.getString("username"));
-				 l.add(tweet);
+				Tweet tweet = new Tweet();
+       		     		tweet.setId(rs.getInt("id"));
+				tweet.setUid(rs.getInt("userId"));
+				tweet.setPostDateTime(rs.getTimestamp("date"));
+				tweet.setContent(rs.getString("text"));
+				tweet.setUname(rs.getString("username"));
+				l.add(tweet);
 			 }
 			 rs.close();
 			 statement.close();
@@ -139,6 +133,35 @@ public class ManageTweets {
 	}
 
 	
+
 	
 	
+	/* Get tweets from followed users*/
+	public List<Tweet> getFollowedTweets(Integer uid,Integer start, Integer end) {
+		String query = "SELECT Tweet.id,Tweet.userId,Tweet.date,Tweet.text,User.username,Tweet.countLikes, FROM Tweet INNER JOIN Following ON Following.followedId = Tweet.userId INNER JOIN User ON User.userId = Tweet.userId WHERE Following.userId = ? ORDER BY Tweet.date DESC LIMIT ?,? ;";
+		PreparedStatement statement = null;
+		List<Tweet> l = new ArrayList<Tweet>();
+		try {
+		 statement = db.prepareStatement(query);
+		 statement.setInt(1,uid);
+		 statement.setInt(2,start);
+		 statement.setInt(3,end);
+		 ResultSet rs = statement.executeQuery();
+		 while (rs.next()) {
+			Tweet tweet = new Tweet();
+			tweet.setId(rs.getInt("id"));
+			tweet.setUid(rs.getInt("userId"));
+			tweet.setPostDateTime(rs.getTimestamp("date"));
+			tweet.setContent(rs.getString("text"));
+			tweet.setUname(rs.getString("username"));
+			l.add(tweet);
+		 }
+		 rs.close();
+		 statement.close();
+		} catch (SQLException e) {
+		e.printStackTrace();
+		} 
+		return  l;
+	}
+
 }
