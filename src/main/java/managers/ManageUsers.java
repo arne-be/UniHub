@@ -115,7 +115,7 @@ public class ManageUsers {
 			statement.setString(5, user.getPhone());
 			statement.setDate(6, user.getDatebirth());
 			statement.setString(7, user.getPwd());
-			statement.setString(8, user.getUsertype());
+			statement.setString(8, "Common");
 			statement.executeUpdate();
 			statement.close();
 			System.out.println("User added: "+user.getUsername());

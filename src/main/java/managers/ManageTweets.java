@@ -138,7 +138,7 @@ public class ManageTweets {
 	
 	/* Get tweets from followed users*/
 	public List<Tweet> getFollowedTweets(Integer uid,Integer start, Integer end) {
-		String query = "SELECT Tweet.id,Tweet.userId,Tweet.date,Tweet.text,User.username,Tweet.countLikes, FROM Tweet INNER JOIN Following ON Following.followedId = Tweet.userId INNER JOIN User ON User.userId = Tweet.userId WHERE Following.userId = ? ORDER BY Tweet.date DESC LIMIT ?,? ;";
+		String query = "SELECT Tweet.id,Tweet.userId,Tweet.date,Tweet.text,User.username,Tweet.countLikes FROM Tweet INNER JOIN Following ON Following.followedId = Tweet.userId INNER JOIN User ON User.Id = Tweet.userId WHERE Following.userId = ? ORDER BY Tweet.date DESC LIMIT ?,? ;";
 		PreparedStatement statement = null;
 		List<Tweet> l = new ArrayList<Tweet>();
 		try {
