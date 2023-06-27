@@ -15,5 +15,10 @@
    <h4> ${t.uname} </h4><br>
    <hr class="w3-clear">
    <p id="tweetContent" class="tweetContent"> ${t.content} </p>
+
+   <br>   
+   <button type="button" class="userInfo w3-row w3-button light-blue-button w3-section"><i class="fa fa-info-circle"></i> &nbsp;Info</button>
+   
 </div>
+
 </c:forEach>
