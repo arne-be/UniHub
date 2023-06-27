@@ -32,13 +32,14 @@ public class ManageTweets {
 	
 	/* Add a tweet */
 	public void addTweet(Tweet tweet) {
-		String query = "INSERT INTO Tweet (userId,date,text) VALUES (?,?,?)";
+		String query = "INSERT INTO Tweet (userId,username,date,text) VALUES (?,?,?,?)";
 		PreparedStatement statement = null;
 		try {
 			statement = db.prepareStatement(query);
 			statement.setInt(1,tweet.getUid());
-			statement.setTimestamp(2,tweet.getPostDateTime());
-			statement.setString(3,tweet.getContent());
+			statement.setString(2,tweet.getUname());
+			statement.setTimestamp(3,tweet.getPostDateTime());
+			statement.setString(4,tweet.getContent());
 			statement.executeUpdate();
 			statement.close();
 		} catch (SQLException e) {
@@ -54,6 +55,21 @@ public class ManageTweets {
 			statement = db.prepareStatement(query);
 			statement.setInt(1,id);
 			statement.setInt(2,uid);
+			statement.executeUpdate();
+			statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+	
+	/* Change(update) the content of a tweet given its new content and its id */
+	public void editTweet(String new_content,Integer id) {
+		String query = "UPDATE Tweet SET text = ? WHERE id = ?";
+		PreparedStatement statement = null;
+		try {
+			statement = db.prepareStatement(query);
+			statement.setString(1,new_content);
+			statement.setInt(2,id);
 			statement.executeUpdate();
 			statement.close();
 		} catch (SQLException e) {

@@ -2,7 +2,6 @@ package controllers;
 
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
-import java.sql.Timestamp;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -20,14 +19,14 @@ import models.User;
 /**
  * Servlet implementation class AddTweetFromUser
  */
-@WebServlet("/AddTweet")
-public class AddTweet extends HttpServlet {
+@WebServlet("/EditTweet")
+public class EditTweet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public AddTweet() {
+    public EditTweet() {
         super();
         // TODO Auto-generated constructor stub
     }
@@ -41,22 +40,16 @@ public class AddTweet extends HttpServlet {
 		ManageTweets tweetManager = new ManageTweets();
 		HttpSession session = request.getSession(false);
 		User user = (User) session.getAttribute("user");
-		
-		try {
-			
-			if (session != null || user != null)
-				BeanUtils.populate(tweet, request.getParameterMap());
-				tweet.setUid(user.getId());
-				tweet.setUname(user.getUsername());
-				tweet.setPostDateTime(new Timestamp(System.currentTimeMillis()));
-				tweetManager.addTweet(tweet);
-				tweetManager.finalize();
 
+		try {
+			if (session != null || user != null) {
+				BeanUtils.populate(tweet, request.getParameterMap());
+				tweetManager.editTweet(tweet.getContent(), tweet.getId());
+				tweetManager.finalize();
+			}
 		} catch (IllegalAccessException | InvocationTargetException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
 	}
 
 	/**

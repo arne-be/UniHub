@@ -42,6 +42,27 @@ $(document).ready(function(){
 		});
 		event.preventDefault();
 	});
+	/* Edit Tweet */
+	$(document).on("click","#editTweet",function(event){
+		var tweet = $(this).parent();
+		tweet.find(".edit").show();
+		tweet.find(".tweetContent").hide();
+		$(this).hide();
+		tweet.find("#editTweet").hide();
+		tweet.find("#saveEdit").show();
+		event.preventDefault();
+	});
+	$(document).on("click","#saveEdit",function(event){
+		var tweet = $(this).parent();
+		tweet.find(".edit").hide();
+		tweet.find(".tweetContent").text(tweet.find(".edit").text())
+		tweet.find(".tweetContent").show();
+		$(this).hide();
+		tweet.find("#editTweet").show();
+		$.post( "EditTweet", { id: tweet.attr("id"), content: tweet.find(".edit").text()});
+		event.preventDefault();
+	});
+	
 	/* Follow user */
 	$(document).on("click",".followUser",function(event){
 		var user = $(this).parent();

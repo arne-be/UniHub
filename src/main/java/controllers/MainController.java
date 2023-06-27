@@ -56,10 +56,12 @@ public class MainController extends HttpServlet {
 			request.setAttribute("content","ViewRegisterForm.jsp");
 			request.setAttribute("login","ViewLoginForm.jsp");
 		}
-		else if (cookie_jar != null && cookie_jar.length > 0){
+		else if (cookie_jar != null && cookie_jar.length == 2){
 			
 			Cookie cUserName = null;
 			Cookie cPassword = null;
+			
+			System.out.println("cookie: "+cookie_jar[0].getName());
 			
 			if (cookie_jar[0].getName().equals("cookuser")) {
 				cUserName = cookie_jar[0];
