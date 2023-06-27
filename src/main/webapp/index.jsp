@@ -99,6 +99,16 @@ $(document).ready(function(){
 			$(this).hide();			
 			event.preventDefault();
 		});
+		
+		/* Delete Own Profile */
+		$(document).on("click","#deleteOwnProfile",function(event){
+			var user = $(this).parent();
+			$.post("DelUser", { id: $(this).parent().attr("id")}, function(event){
+				$("#content").load("GoodbyeController");
+			});
+			event.preventDefault();
+		});
+		
 });
 </script>
 </head>

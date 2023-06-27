@@ -424,5 +424,59 @@ public class ManageUsers {
 			e.printStackTrace();
 		}
 	}
+	
+	/* Deletes a user given its id */
+	public void deleteUser(Integer target_id) {
+		String query = "DELETE FROM TweetLikes WHERE userId=?;"; // Delete likes
+		String query1 = "DELETE FROM Tweet WHERE userId =?;"; // Delete the tweet
+		String query2 = "DELETE FROM Following WHERE userId = ? or followedId = ?;";
+		String query3 = "DELETE FROM User WHERE id = ?;"; // Delete first the likes of that tweet(avoid fk errors)
+		
+		PreparedStatement statement = null;
+		PreparedStatement statement1 = null;
+		PreparedStatement statement2 = null;
+		PreparedStatement statement3 = null;
+
+		try {
+			statement = db.prepareStatement(query);
+			statement.setInt(1,target_id);
+			statement.executeUpdate();
+			statement.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			statement1 = db.prepareStatement(query1);
+			statement1.setInt(1,target_id);
+			statement1.executeUpdate();
+			statement1.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			statement2 = db.prepareStatement(query2);
+			statement2.setInt(1,target_id);
+			statement2.setInt(2,target_id);
+			statement2.executeUpdate();
+			statement2.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+		
+		try {
+			statement3 = db.prepareStatement(query3);
+			statement3.setInt(1,target_id);
+			statement3.executeUpdate();
+			statement3.close();
+			
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
