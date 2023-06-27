@@ -25,7 +25,7 @@
         <button type="button" class="unfollowUser w3-row w3-button purple-button w3-section"><i class="fa fa-trash"></i> &nbsp;Unfollow</button>
 
         <c:if test="${user.getUsertype() == 'Administrator'}">
-            <button type="button" class="deleteProfile w3-margin-bottom">Delete</button>
+            <button type="button" class="deleteProfile w3-row w3-button purple-button w3-section"><i class="fa fa-trash"></i> &nbsp;Delete</button>
         </c:if>
     </div>
 </c:forEach>
