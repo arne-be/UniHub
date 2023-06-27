@@ -1,0 +1,8 @@
+.profileform{
+	border-style: solid;
+	border-color: #000000;
+	border-width: 3px;
+	margin: 5%;
+	max-width: 90%;
+	border-radius: 10px;
+}

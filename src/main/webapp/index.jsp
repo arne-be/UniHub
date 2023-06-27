@@ -81,6 +81,24 @@ $(document).ready(function(){
 		});
 		event.preventDefault();
 	});
+	/* Edit Profile */
+	$(document).on("click","#editUser",function(event){
+			$(".editProfile").show();
+			$(".showProfile").hide();
+			$(this).hide();
+			$("#saveProfile").show();
+			event.preventDefault();
+		});	
+		$(document).on("click","#saveProfile",function(event){
+			$('#rcolumn').load( "SaveProfile", { id: $(this).parent().attr("id"), username: $("#username").val(), name: $("#name").val(), mail: $("#email").val(),
+				 about: $("#about").val(), datebirth: $("#dob").val()} );
+			user.getError("user")
+			$(".editProfile").hide();
+			$(".showProfile").show();
+			$("#saveProfile").hide();
+			$(this).hide();			
+			event.preventDefault();
+		});
 });
 </script>
 </head>

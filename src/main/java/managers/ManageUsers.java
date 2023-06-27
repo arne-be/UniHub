@@ -397,5 +397,32 @@ public class ManageUsers {
 	    }
 	    return exists;
 	}
+	
+	/*EDIT PROFILE */
+	public boolean editComplete(User user) {
+		return(hasValue(user.getUsername()) &&
+		    	   hasValue(user.getName()) &&
+		    	   hasValue(user.getMail()) &&
+		    	   user.getAbout() != null &&
+		    	   has_DateValue(user.getDatebirth()));
+	}
+	public void editProfile(User user) {
+		String query = "UPDATE User SET username = ?, name = ?, mail = ?, about = ?, dob = ? WHERE id = ?";
+		PreparedStatement statement = null;
+		try {
+			statement = db.prepareStatement(query);
+			statement.setString(1,user.getUsername());
+			statement.setString(2,user.getName());
+			statement.setString(3,user.getMail());
+			statement.setString(4,user.getAbout());
+			statement.setDate(5,user.getDatebirth());
+			statement.setInt(6,user.getId());
+			statement.executeUpdate();
+			statement.close();
+			System.out.println("succesful profile edit with name "+user.getId());
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
 }
