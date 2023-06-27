@@ -4,7 +4,7 @@
 
 <c:if test="${tweets.isEmpty() }">
 <div class="postcard">
-  <p> You have tno published any tweets yet... Start sharing now! </p>
+  <p> You have not published any tweets yet... Start sharing now! </p>
 </div>
 </c:if>
 
