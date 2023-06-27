@@ -1,6 +1,8 @@
 package controllers;
 
 import java.io.IOException;
+import java.util.Collections;
+import java.util.List;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -8,18 +10,23 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import managers.ManageTweets;
+import models.Tweet;
+import models.User;
 
 /**
- * Servlet implementation class GetOwnTimeline
+ * Servlet implementation class dTcontroller
  */
-@WebServlet("/GetTimeline")
-public class GetTimeline extends HttpServlet {
+@WebServlet("/GetFollowedTweets")
+public class GetFollowedTweets extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public GetTimeline() {
+    public GetFollowedTweets() {
         super();
     }
 
@@ -27,8 +34,20 @@ public class GetTimeline extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		RequestDispatcher dispatcher = request.getRequestDispatcher("ViewTimeline.jsp");
-		dispatcher.forward(request, response);
+		
+		HttpSession session = request.getSession(false);
+		List<Tweet> tweets = Collections.emptyList();
+		User user = (User) session.getAttribute("user");
+		
+		if (session != null || user != null) {
+			ManageTweets tweetManager = new ManageTweets();
+			tweets = tweetManager.getFollowedTweets(user.getId(),0,4);
+			tweetManager.finalize();
+		}
+
+		request.setAttribute("tweets",tweets);
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/ViewFollowedTweets.jsp"); 
+		dispatcher.forward(request,response);
 		
 	}
 
@@ -40,3 +59,4 @@ public class GetTimeline extends HttpServlet {
 	}
 
 }
+
