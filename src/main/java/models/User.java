@@ -38,7 +38,7 @@ public class User implements java.io.Serializable {
 	private String pwd = "";
 	private String pwd2 = "";
 	private String about = "";
-	private String usertype = "";
+	private String usertype = "Common";
 	
 	/*private ¿photo? picture = null; */
 
