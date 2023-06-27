@@ -26,8 +26,8 @@ body {
 	<p>Friend Suggestion</p>
     <img src="imgs/avatar6.png" alt="Avatar" style="width:50%"><br>
     <div>${u.username}</div>
-    <button type="button" class="userInfo w3-row w3-button light-blue-button w3-section"><i class="fa fa-info-circle"></i> &nbsp;Info</button>
-    <button type="button" class="followUser w3-row w3-button light-blue-button w3-section"><i class="fa fa-user-plus"></i> &nbsp;Follow</button> 
+    <button id="userInfo" type="button" class="userInfo w3-row w3-button light-blue-button w3-section"><i class="fa fa-info-circle"></i> &nbsp;Info</button>
+    <button id="followuser" type="button" class="followUser w3-row w3-button light-blue-button w3-section"><i class="fa fa-user-plus"></i> &nbsp;Follow</button> 
 </div>
 </c:forEach>
 

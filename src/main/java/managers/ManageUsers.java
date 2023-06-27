@@ -478,5 +478,28 @@ public class ManageUsers {
 			e.printStackTrace();
 		}
 	}
+	
+	/* Check given user of the session and another user, if the first follows the second one */
+	public boolean isFollowed(Integer uid, Integer fid) {
+		boolean isFollowed = false;
+		String query = "SELECT * FROM Following WHERE userId= ? AND followedId=?";
+		PreparedStatement statement = null;
+		try {
+			 statement = db.prepareStatement(query);
+			 statement.setInt(1,uid);
+			 statement.setInt(2,fid);
+			 ResultSet rs = statement.executeQuery();
+			 if (rs.next()) { // If the query returns something
+				 isFollowed = true;
+			 } else {
+				 isFollowed = false;
+			 }
+			 rs.close();
+			 statement.close();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} 
+		return isFollowed;
+	}
 
 }

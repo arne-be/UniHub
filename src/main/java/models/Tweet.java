@@ -10,6 +10,7 @@ public class Tweet implements java.io.Serializable {
 	 private String uname;
 	 private Timestamp postDateTime;
 	 private String content;
+	 private int countLikes;
 
 	 public Tweet() {
 	 }
@@ -52,5 +53,13 @@ public class Tweet implements java.io.Serializable {
 		 System.out.println("content of tweet: "+content);
 		 this.content = content;
 	 }
+
+	public int getCountLikes() {
+		return countLikes;
+	}
+
+	public void setCountLikes(int countLikes) {
+		this.countLikes = countLikes;
+	}
 
 }

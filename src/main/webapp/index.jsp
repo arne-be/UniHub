@@ -27,6 +27,13 @@ $(document).ready(function(){
 		$('#content').load($(this).attr('action'),$(this).serialize());
 	    event.preventDefault();
 	});
+	$(document).on("click","#userInfo",function(event) {
+		var u_id = $(this).parent();
+		$('#rcolumn').load( "GetOtherUserInfo", {id:u_id.attr("id")});
+		$("#content").load("GetOtherUserTweets", {id:u_id.attr("id")});
+		event.preventDefault();
+		
+	});
 	/* Add tweet */
 	$(document).on("click","#addTweet",function(event){
 		$.post( "AddTweet", { content: $("#tweetContent").text()}, function(event) {
@@ -105,6 +112,14 @@ $(document).ready(function(){
 			var user = $(this).parent();
 			$.post("DelUser", { id: $(this).parent().attr("id")}, function(event){
 				$("#content").load("GoodbyeController");
+			});
+			event.preventDefault();
+		});
+		/*Delete other profile*/
+		$(document).on("click","#deleteProfile",function(event){
+			var user = $(this).parent();
+			$.post("DelUser", { id: $(this).parent().attr("id")}, function(event){
+				$("#content").load("GetOwnTimeline");
 			});
 			event.preventDefault();
 		});
