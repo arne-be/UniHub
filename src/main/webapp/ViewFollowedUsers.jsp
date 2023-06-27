@@ -21,7 +21,6 @@
         <img src="imgs/avatar2.png" alt="Avatar" class="w3-left w3-circle w3-margin-right" style="width:60px">
         <h4>${u.username}</h4><br>
         <hr class="w3-clear">
-        <button id="userInfo" type="button" class="userInfo w3-row w3-button purple-button w3-section"><i class="fa fa-info-circle"></i> &nbsp;Info</button>
         <button id="unfollowUser" type="button" class="unfollowUser w3-row w3-button purple-button w3-section"><i class="fa fa-trash"></i> &nbsp;Unfollow</button>
 
         <c:if test="${user.getUsertype() == 'Administrator'}">
