@@ -16,10 +16,15 @@
    <hr class="w3-clear">
    <p id="tweetContent" class="tweetContent"> ${t.content} </p>
 
-   <br>
+   <br>   
    
-
+   <button id="userInfo" type="button" class="userInfoFromTweet w3-row w3-button purple-button w3-section"><i class="fa fa-info-circle"></i> &nbsp;Info</button>
    <button type="button" id="likeTweet" class="likeTweet w3-row w3-button purple-button w3-section"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button>
-   <button type="button" class="userInfo w3-row w3-button light-blue-button w3-section"><i class="fa fa-info-circle"></i> &nbsp;Info</button>
+   
+   <c:if test="${user.usertype == 'Administrator'}">
+   	<button type="button" id="editTweet" class="editTweet w3-row w3-button purple-button w3-section"><i class="fa fa-edit"></i> &nbsp;Edit</button> 
+   	<button type="button" id="saveEdit" class="saveEdit w3-row w3-button purple-button w3-section" hidden="hidden"><i id="saveEdit" class="saveEdit fa fa-edit"></i> &nbsp;Update</button>
+   	<button type="button" id="deleteTweet" class="delTweet w3-row w3-button purple-button w3-section"><i class="fa fa-trash"></i> &nbsp;Delete</button>
+   </c:if>
  </div>
 </c:forEach>

@@ -17,7 +17,7 @@
    <p id="tweetContent" class="tweetContent"> ${t.content} </p>
 
    <br>   
-   <button type="button" class="userInfo w3-row w3-button" style="background-color: purple; color: white;"><i class="fa fa-info-circle"></i> &nbsp;Info</button>
+   <button type="button" class="userInfoFromTweet w3-row w3-button" style="background-color: purple; color: white;"><i class="fa fa-info-circle"></i> &nbsp;Info</button>
    
 </div>
 

@@ -29,8 +29,15 @@ $(document).ready(function(){
 	});
 	$(document).on("click","#userInfo",function(event) {
 		var u_id = $(this).parent();
-		$('#rcolumn').load( "GetOtherUserInfo", {id:u_id.attr("id")});
-		$("#content").load("GetOtherUserTweets", {id:u_id.attr("id")});
+		$('#rcolumn').load( "GetOtherUserInfo", {id: u_id.attr("id")});
+		$("#content").load("GetOtherUserTweets", {id: u_id.attr("id")});
+		event.preventDefault();
+		
+	});
+	$(document).on("click","#userInfoFromTweet",function(event) {
+		var u_id = $(this).parent();
+		$('#rcolumn').load( "GetOtherUserInfo", {id: u_id.attr("uid")});
+		$("#content").load("GetOtherUserTweets", {id: u_id.attr("uid")});
 		event.preventDefault();
 		
 	});

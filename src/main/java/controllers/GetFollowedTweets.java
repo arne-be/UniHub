@@ -44,7 +44,8 @@ public class GetFollowedTweets extends HttpServlet {
 			tweets = tweetManager.getFollowedTweets(user.getId(),0,4);
 			tweetManager.finalize();
 		}
-
+		
+		request.setAttribute("user", user);
 		request.setAttribute("tweets",tweets);
 		RequestDispatcher dispatcher = request.getRequestDispatcher("/ViewFollowedTweets.jsp"); 
 		dispatcher.forward(request,response);

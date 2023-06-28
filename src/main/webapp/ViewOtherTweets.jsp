@@ -18,9 +18,13 @@
    <p id="edit" class="edit tweetform" contenteditable="true" hidden="hidden"> ${t.content} </p>
    <br>
    
-   <button type="button" id="editTweet" class="editTweet w3-row w3-button purple-button w3-section"><i class="fa fa-edit"></i> &nbsp;Edit</button> 
-   <button type="button" id="saveEdit" class="saveEdit w3-row w3-button purple-button w3-section" hidden="hidden"><i id="saveEdit" class="saveEdit fa fa-edit"></i> &nbsp;Update</button>
+   
    <button type="button" id="likeTweet" class="likeTweet w3-row w3-button purple-button w3-section"><i class="fa fa-thumbs-up"></i> &nbsp;Like</button>
-   <button type="button" id="deleteTweet" class="delTweet w3-row w3-button purple-button w3-section"><i class="fa fa-trash"></i> &nbsp;Delete</button> 
+   
+   <c:if test="${user.getUsertype() == 'Administrator'}">
+   	<button type="button" id="editTweet" class="editTweet w3-row w3-button purple-button w3-section"><i class="fa fa-edit"></i> &nbsp;Edit</button> 
+   	<button type="button" id="saveEdit" class="saveEdit w3-row w3-button purple-button w3-section" hidden="hidden"><i id="saveEdit" class="saveEdit fa fa-edit"></i> &nbsp;Update</button>
+   	<button type="button" id="deleteTweet" class="delTweet w3-row w3-button purple-button w3-section"><i class="fa fa-trash"></i> &nbsp;Delete</button>
+   </c:if> 
  </div>
 </c:forEach>

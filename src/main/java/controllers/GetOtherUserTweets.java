@@ -50,13 +50,15 @@ public class GetOtherUserTweets extends HttpServlet {
 				tweets = tweetManager.getUserTweets(target_user.getId(),0,4);
 				tweetManager.finalize();
 			}
+			
 		}
 		catch (IllegalAccessException | InvocationTargetException e) {
 			e.printStackTrace();
 		}		
 
+		request.setAttribute("user", user);
 		request.setAttribute("tweets",tweets);
-		RequestDispatcher dispatcher = request.getRequestDispatcher("/ViewTweets.jsp"); 
+		RequestDispatcher dispatcher = request.getRequestDispatcher("/ViewOtherTweets.jsp"); 
 		dispatcher.forward(request,response);
 		
 	}

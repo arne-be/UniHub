@@ -43,7 +43,9 @@ public class GetOtherUserInfo extends HttpServlet {
 			if (session != null || user != null) {
 				BeanUtils.populate(target_user, request.getParameterMap());
 				otherUser = userManager.getUser(target_user.getId());	
+				userManager.finalize();
 			}
+			
 		} 
 		catch (IllegalAccessException | InvocationTargetException e) {
 		e.printStackTrace();
